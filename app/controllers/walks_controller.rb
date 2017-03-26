@@ -16,6 +16,27 @@ class WalksController < ApplicationController
     @walk = @dog.walks.new
   end
 
+  def create
+  @walk = @dog.walks.new(walk_parmas)
+
+  if @walk.save
+    render json: @walk, status: :created
+  end
+end
+
+def update
+  if @walk.update(walk_parmas)
+    render json: @walk, status: :ok
+  end
+end
+
+def destroy
+  @walk.destroy
+  respond_to do |format|
+    format.json { head :no_content }
+  end
+end
+
   private
 
   def walk_parmas
@@ -29,4 +50,4 @@ class WalksController < ApplicationController
   def set_dog
     @dog = Dog.find(params[:dog_id])
   end
-end 
+end

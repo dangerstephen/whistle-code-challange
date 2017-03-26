@@ -16,6 +16,27 @@ class MealsController < ApplicationController
     @meal = @dog.meals.new
   end
 
+  def create
+  @meal = @dog.meals.new(meal_params)
+
+  if @meal.save
+    render json: @meal, status: :created
+  end
+end
+
+def update
+  if @meal.update(meal_params)
+    render json: @meal, status: :ok
+  end
+end
+
+def destroy
+  @meal.destroy
+  respond_to do |format|
+    format.json { head :no_content }
+  end
+end
+
   private
 
   def meal_params
