@@ -21,12 +21,16 @@ class WalksController < ApplicationController
 
   if @walk.save
     render json: @walk, status: :created
+  else
+    render json: @walk.errors, status: :unprocessable_entity
   end
 end
 
 def update
   if @walk.update(walk_parmas)
     render json: @walk, status: :ok
+  else
+    render json: @walk.errors, status: :unprocessable_entity
   end
 end
 
