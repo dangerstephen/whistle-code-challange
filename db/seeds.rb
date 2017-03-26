@@ -6,3 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Dog.create(name: "Lola")
+Dog.create(name: "Zipper")
+Dog.create(name: "Pixel")
+Dog.create(name: "Xavier")
+Dog.create(name: "Charile")
