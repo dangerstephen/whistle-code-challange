@@ -3,8 +3,8 @@ class CreateWalks < ActiveRecord::Migration
     create_table :walks do |t|
       t.string :location
       t.integer :dog_id
-      t.datetime :start_time
-      t.datetime :end_time
+      t.string :start_time
+      t.string :end_time
 
       t.timestamps null: false
     end

@@ -1,6 +1,5 @@
 class WalksController < ApplicationController
   before_action :set_walk, only: [:show, :update, :destroy]
-
   before_action :set_dog, only: [:index, :show, :new, :create]
 
   def index
@@ -18,6 +17,7 @@ class WalksController < ApplicationController
 
   def create
   @walk = @dog.walks.new(walk_parmas)
+
 
   if @walk.save
     render json: @walk, status: :created
@@ -44,11 +44,11 @@ end
   private
 
   def walk_parmas
-    params.permit(:start_time, :end_time, :location, :dog_id)
+    params.permit(:start_time, :end_time, :location, :dog_id, :date)
   end
 
   def set_walk
-    @walk = Meal.find(params[:id])
+    @walk = Walk.find(params[:id])
   end
 
   def set_dog

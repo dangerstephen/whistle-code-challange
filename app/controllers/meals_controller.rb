@@ -1,6 +1,5 @@
 class MealsController < ApplicationController
   before_action :set_meal, only: [:show, :update, :destroy]
-
   before_action :set_dog, only: [:index, :show, :new, :create]
 
   def index
@@ -18,6 +17,7 @@ class MealsController < ApplicationController
 
   def create
   @meal = @dog.meals.new(meal_params)
+
 
   if @meal.save
     render json: @meal, status: :created
@@ -44,7 +44,7 @@ end
   private
 
   def meal_params
-    params.permit(:start_time, :end_time, :food, :dog_id)
+    params.permit(:start_time, :end_time, :food, :dog_id, :date)
   end
 
   def set_meal

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326181012) do
+ActiveRecord::Schema.define(version: 20170327214941) do
 
   create_table "dogs", force: :cascade do |t|
     t.string   "name"
@@ -22,19 +22,21 @@ ActiveRecord::Schema.define(version: 20170326181012) do
   create_table "meals", force: :cascade do |t|
     t.string   "food"
     t.integer  "dog_id"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.string   "start_time"
+    t.string   "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "date"
   end
 
   create_table "walks", force: :cascade do |t|
     t.string   "location"
     t.integer  "dog_id"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.string   "start_time"
+    t.string   "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "date"
   end
 
 end
