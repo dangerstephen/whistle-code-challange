@@ -1,16 +1,16 @@
 class InteractController < ApplicationController
-  def index
-    @dogs = Dog.all
-  end
+    def index
+        @dogs = Dog.all
+    end
 
-  def show
-    @dog = Dog.find(params[:id])
-  end
+    def show
+        @dog = Dog.find(params[:id])
+    end
 
-  private
+    private
 
-  def set_dog
-    @dog = Dog.find(params[:id])
-  end
+    def set_dog
+        @dog = Dog.find(params[:id])
+    end
 
 end
