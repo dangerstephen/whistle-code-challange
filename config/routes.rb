@@ -1,18 +1,16 @@
 Rails.application.routes.draw do
 
-  get 'routes/index'
-
   root 'interact#index'
-  get "/routes" =>"routes#index", as: "routes"
+get "/routes" =>"routes#index", as: "routes"
 
-
-  resources :interact
+  resources :interact, only: [:index]
 
   resources :dogs do
-    resource :schedule
-    resources :meals
-    resources :walks
+    resource :schedule, only: [:show]
+    resources :meals, only: [:index, :create]
+    resources :walks, only: [:index, :create]
   end
 
+  get '*path' => redirect('/')
 
 end

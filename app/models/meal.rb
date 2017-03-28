@@ -1,25 +1,20 @@
 class Meal < ActiveRecord::Base
   validates :start_time, :end_time, :food, :dog_id, presence: true
-  validate :is_overlaing
-
-
+  validate :check_over_lap
   belongs_to :dog
 
-  private
+  def check_over_lap
+    check_meals = Meal.where(<<-SQL, start_time: start_time, end_time: end_time)
+                NOT( (start_time > :end_time) || (end_time < :start_time) )
+              SQL
 
-  def check_for_overlap
-      meals = Meal.where(date: date)
-
-
-      walks = Walk.where(date: date)
-
-
-      return meals.concat(walks)
-    end
-
-    def is_overlaing
-      return if check_for_overlap.empty?
-
-    end
+    check_walks = Walk.where(<<-SQL, start_time: start_time, end_time: end_time)
+                NOT( (start_time > :end_time) || (end_time < :start_time) )
+              SQL
+   if check_walks.size > 0 || check_meals.size > 0
+       errors.add(:start_time, "Sorry! Another Event is during this same time")
+       errors.add(:end_time, "Sorry! Another Event is during this same time")
+   end
+  end
 
 end

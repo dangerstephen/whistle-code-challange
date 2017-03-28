@@ -21,17 +21,17 @@ RSpec.describe Walk, type: :model do
     expect(Walk.count).to eq 0
   end
   it "does not save when times overlap" do
-   Walk.create(
-     start_time: "2017-01-01 08:00:00 -0800",
-     end_time: "2017-01-01 08:15:00 -0800",
-     date: "2017-01-01",
-     location: "Fort Funston",
-     dog_id: 1
-   )
+    Walk.create(
+      start_time: "2017-01-01 08:14:33 -0800",
+      end_time: "2017-01-01 08:30:00 -0800",
+      date: "2017-01-01",
+      location: "Fort Baker",
+      dog_id: 1
+    )
 
    Walk.create(
-     start_time: "2017-01-01 08:14:59 -0800",
-     end_time: "2017-01-01 08:30:00 -0800",
+     start_time: "2017-01-01 08:20:00 -0800",
+     end_time: "2017-01-01 08:40:00 -0800",
      date: "2017-01-01",
      location: "Fort Baker",
      dog_id: 1
