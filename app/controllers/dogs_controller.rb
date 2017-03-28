@@ -49,7 +49,7 @@ end
   end
 
   def dog_params
-    params.require(:dog).permit(:name, :image_src)
+    params.require(:dog).permit(:name, :image_src, :bio)
   end
 
 end
