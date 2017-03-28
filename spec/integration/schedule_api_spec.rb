@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "the schedule API" do
-  let!(:dog) { Dog.create(name: "Duke") }
+  let!(:dog) { Dog.create(name: "Duke",
+     image_src: "http://r.ddmcdn.com/s_f/o_1/cx_633/cy_0/cw_1725/ch_1725/w_720/APL/uploads/2014/11/too-cute-doggone-it-video-playlist.jpg"
+     ) }
 
   describe "querying the dog's schedule" do
     it "returns an empty array when there are no items" do

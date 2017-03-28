@@ -1,0 +1,118 @@
+// Place all the styles related to the interact controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+//VARIABLES
+//COLORS
+$light-grey: #e0dfe1;
+$grey: #9f9e9f;
+$white: #ffffff;
+$black-30: 		rgba(0,0,0,0.3);
+$transparent: 	rgba(255,255,255,0);
+
+//ANIMATIONS stuff
+$hover: all, 0.2s, ease-in;
+
+// ADDS A BROWSER PREFIX TO THE PROPERTY
+@mixin css3-prefix($property, $value) {
+    -webkit-#{$property}: #{$value};
+    -khtml-#{$property}: #{$value};
+    -moz-#{$property}: #{$value};
+    -ms-#{$property}: #{$value};
+    -o-#{$property}: #{$value};
+    #{$property}: #{$value};
+}
+// TRANSFORM
+@mixin transform($params) {
+    @include css3-prefix('transform', $params);
+}
+//FONT IMPORT
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700);
+
+body {
+  background-color: #ffffff;
+  font-family: 'Noto Sans', sans-serif;
+  text-align: center;
+}
+
+.main-wrapper {
+  padding: 0 20px;
+  position: relative;
+}
+
+
+h3 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+p {
+  color: black;
+  font-size: 14px;
+  line-height: 1.6em;
+}
+
+.blog-post-wrapper {
+  position: relative;
+  z-index: 4;
+  padding: 150px 0;
+}
+
+.blog-post {
+  margin: 0 auto;
+  background-color: #c3c3c7;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 10px;
+  &--description {
+    text-align: left;
+    position: relative;
+    z-index: 4;
+    padding: 0 80px 30px 40px;
+  }
+  &--tools {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+  }
+
+  img {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0.5;
+}
+
+}
+
+.icon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  margin: 0 8%;
+  cursor: pointer;
+
+  svg {
+    fill: black;
+    transition: $hover;
+  }
+
+  &:hover {
+    svg {
+      fill: $grey;
+    }
+  }
+
+  span {
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 11px;
+  }
+}

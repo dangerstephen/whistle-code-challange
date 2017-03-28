@@ -24,6 +24,10 @@ class DogsController < ApplicationController
   end
 end
 
+def edit
+  @dog = Dog.find(set_dog)
+end
+
 def update
   if @dog.update(dog_params)
     render json: @dog, status: :ok
@@ -33,10 +37,9 @@ def update
 end
 
 def destroy
+  @dog = Dog.find(set_dog)
   @dog.destroy
-  respond_to do |format|
-    format.json { head :no_content }
-  end
+  redirect_to('/interact')
 end
 
 
@@ -46,7 +49,7 @@ end
   end
 
   def dog_params
-    params.require(:dog).permit(:name)
+    params.require(:dog).permit(:name, :image_src)
   end
 
 end

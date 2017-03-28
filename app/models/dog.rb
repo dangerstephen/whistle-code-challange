@@ -1,5 +1,5 @@
 class Dog < ActiveRecord::Base
-  validates :name, presence: true
+  validates :name, :image_src, presence: true
 
   has_many :meals
   has_many :walks
